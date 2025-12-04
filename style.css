@@ -104,6 +104,33 @@ a {
     box-shadow: var(--header-shadow); 
 }
 
+/* ⬅️ THIS IS THE IMPORTANT SECTION TO UPDATE 💡 */
+
+/* 1. Set the correct, small size for ALL logo icons (36x36) */
+.logo-icon {
+    width: 36px; /* Correctly sets the size for the small icon */
+    height: 36px;
+    
+    /* Ensures the image fits */
+    object-fit: contain; 
+    
+    /* Ensure no overriding size issues */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 2. Theme Switching Logic: Hide the dark logo by default in light mode */
+.logo-dark { 
+    display: none; 
+}
+
+/* 3. Theme Switching Logic: When body.dark-mode is active... */
+body.dark-mode .logo-light { 
+    display: none; /* ...hide the light logo */
+} 
+body.dark-mode .logo-dark { 
+    display: block; /* ...show the dark logo */
+}
 .nav-wrap {
     width: 100%; 
     height: 100%;

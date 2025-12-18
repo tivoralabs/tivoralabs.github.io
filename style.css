@@ -800,6 +800,13 @@ body.dark-mode .mobile-nav .mobile-toggle-wrapper .theme-toggle:hover {
     color: var(--primary);
 }
 
+.reg-number {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 0.85rem; /* Makes it slightly smaller and cleaner */
+    opacity: 0.7;       /* Gives it a secondary "legal" look */
+}
+
 /* ----------------- RESPONSIVE ----------------- */
 @media (max-width: 1024px){
     .cards-grid { grid-template-columns: repeat(2, 1fr); }
@@ -856,4 +863,141 @@ body.dark-mode .mobile-nav .mobile-toggle-wrapper .theme-toggle:hover {
 .reveal.in-view {
     opacity: 1;
     transform: none;
+}
+
+/* ----------------- MODALS ----------------- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    backdrop-filter: blur(5px);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: var(--bg-main);
+    margin: auto;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    width: 90%; 
+    max-width: 800px; /* Max width for readability */
+    border-radius: var(--radius);
+    position: relative;
+    box-shadow: var(--header-shadow);
+    animation: slideUp 0.3s;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.modal-body {
+    max-height: 70vh; /* Make content scrollable if it gets too long */
+    overflow-y: auto;
+    padding-right: 15px; /* space for scrollbar */
+    color: var(--text-color);
+}
+
+.modal-body h4 {
+    font-size: 1.2rem;
+    margin: 20px 0 10px;
+    color: var(--accent);
+}
+
+.modal-body p, .modal-body li {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+}
+
+.modal-body ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* ADDED FOR NEW EMAIL MODAL FORM */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.form-group input[type="email"],
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-main);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.contact-form-modal .btn {
+    width: 100%; /* Make the button full width */
+    margin-top: 10px;
+}
+
+
+/* Close Button */
+.close-btn {
+    color: var(--muted);
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animations for smoothness */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
 }

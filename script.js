@@ -70,6 +70,140 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- End Dark Mode Logic ---
 
+    // script.js (ADD THIS SECTION)
+
+    // --- Modal Logic for Privacy & Terms ---
+// --- Modal Logic for Privacy, Terms, and NEW Email Form ---
+const privacyModal = document.getElementById('privacy-modal');
+const termsModal = document.getElementById('terms-modal');
+const emailFormModal = document.getElementById('email-form-modal'); // <-- NEW MODAL REFERENCE
+const privacyLink = document.getElementById('privacy-link');
+const termsLink = document.getElementById('terms-link');
+const emailUsLink = document.getElementById('email-us-link'); // <-- NEW BUTTON REFERENCE
+    
+const allModals = [privacyModal, termsModal, emailFormModal]; // <-- UPDATED ARRAY
+
+    // Function to open a modal
+    const openModal = (modal) => {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    // Function to close a modal
+// Function to close a modal
+const closeModal = (modal) => {
+modal.style.display = 'none';
+document.body.style.overflow = ''; // Re-enable background scrolling
+        
+        // NEW: Clear the form if the email modal is closed
+        if (modal && modal.id === 'email-form-modal') {
+            const form = document.getElementById('contact-form-internal');
+            if (form) form.reset();
+        }
+}
+
+    // Click handlers for links
+    if (privacyLink) {
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop the default scroll-to-top behavior
+            openModal(privacyModal);
+        });
+    }
+
+    if (termsLink) {
+        termsLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop the default scroll-to-top behavior
+            openModal(document.getElementById('terms-modal'));
+        });
+    }
+
+    // Click handlers for close button (span class="close-btn")
+    allModals.forEach(modal => {
+        if (modal) {
+            const closeBtn = modal.querySelector('.close-btn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => closeModal(modal));
+            }
+        }
+    });
+
+    if (termsLink) {
+termsLink.addEventListener('click', (e) => {
+e.preventDefault(); // Stop the default scroll-to-top behavior
+openModal(termsModal);
+});
+}
+
+    // NEW: Click handler for 'Email Us Today' to open the form modal
+    if (emailUsLink) {
+        emailUsLink.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            openModal(emailFormModal);
+        });
+    }
+
+// Click handlers for close button (span class="close-btn")
+// ... rest of the code continues
+
+    // Close the modal if the user clicks anywhere outside of the modal-content
+    window.addEventListener('click', (event) => {
+        allModals.forEach(modal => {
+            if (event.target === modal) {
+                closeModal(modal);
+            }
+        });
+    });
+
+    // Close modal on ESC key press
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            allModals.forEach(modal => {
+                if (modal && modal.style.display === 'block') {
+                    closeModal(modal);
+                }
+            });
+        }
+    });
+    // --- End Modal Logic ---
+    
+// ... rest of the script.js continues from here ...
+
+// --- End Modal Logic ---
+
+    // --- NEW Mailto Form Submission Handler ---
+    const contactForm = document.getElementById('contact-form-internal');
+
+    if (contactForm && emailFormModal) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const fromEmail = document.getElementById('modal-from-email').value;
+            const subject = document.getElementById('modal-subject').value;
+            const message = document.getElementById('modal-message').value;
+            const toEmail = 'ping@tivoralabs.com'; // Your company email
+
+            // Construct the mailto link using URL encoding for spaces and special characters
+            let mailtoLink = `mailto:${toEmail}`;
+            mailtoLink += `?subject=${encodeURIComponent(subject)}`;
+            
+            // Prepend the user's 'From' email to the message body for context
+            const bodyContent = `From: ${fromEmail}\n\n${message}`;
+            mailtoLink += `&body=${encodeURIComponent(bodyContent)}`;
+
+            // Open the user's default email client
+            window.location.href = mailtoLink;
+
+            // Close the modal (the form will be reset by the closeModal function)
+            closeModal(emailFormModal);
+        });
+    }
+    // --- End Mailto Form Submission Handler ---
+    
+// ... rest of the script.js continues from here ...
+
+// Mobile nav toggle
+// ...
+
     // Mobile nav toggle
     menuBtn.addEventListener('click', () => {
         mobileNav.classList.toggle('open');

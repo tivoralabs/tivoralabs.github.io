@@ -203,7 +203,7 @@
                             <strong>Phone:</strong> +60 (123) 456 7890 <br> <strong>Location:</strong> Cyberjaya, Malaysia
                         </p>
 
-                        <a class="btn primary" href="mailto:ping@tivoralabs.com">Email Us Today</a>
+                        <a class="btn primary" href="#" id="email-us-link">Email Us Today</a>
                     </div>
 
                     
@@ -212,15 +212,95 @@
         </section>
 
         <footer class="site-footer">
-            <div class="container footer-grid">
-                <div>&copy; <span id="year"></span> Tivora Labs. All rights reserved.</div>
-                <div class="foot-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-            </div>
-        </footer>
+    <div class="container footer-grid">
+        <div>
+            &copy; <span id="year"></span> Tivora Labs. All rights reserved.<br>
+            <span class="reg-number">Registration No: 202501050987 (1652395-D)</span>
+        </div>
+        <div class="foot-links">
+            <a href="#" id="privacy-link">Privacy Policy</a>
+            <a href="#" id="terms-link">Terms of Service</a>
+        </div>
+    </div>
+</footer>
     </main>
+
+    <div id="privacy-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Privacy Policy</h2>
+        <div class="modal-body">
+            <p><strong>Effective Date: December 9, 2025</strong></p>
+            <p>We take your privacy seriously. This document outlines the types of information we collect, how we use it, and the steps we take to protect it. Since this is a simple one-page site, we collect minimal data, primarily through direct contact (email) initiated by you.</p>
+            
+            <h4>Information We Collect</h4>
+            <ul>
+                <li><strong>Direct Contact Information:</strong> Your name, email address, and any message content you provide when contacting us via the 'ping@tivoralabs.com' link.</li>
+                <li><strong>Usage Data:</strong> We may collect non-personal information such as browser type, time spent on the site, and sections viewed for the purpose of improving user experience.</li>
+            </ul>
+
+            <h4>How We Use Your Information</h4>
+            <p>Your information is used solely to respond to your inquiries about our services and to maintain and improve the performance of our website.</p>
+            
+            <h4>Your Consent</h4>
+            <p>By using this website and contacting us, you consent to our privacy policy.</p>
+            
+        </div>
+    </div>
+</div>
+
+<div id="terms-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Terms of Service</h2>
+        <div class="modal-body">
+            <p><strong>Last Updated: December 9, 2025</strong></p>
+            <p>Welcome to Tivora Labs. By accessing or using our website, you agree to comply with and be bound by the following terms and conditions. Please review these terms carefully.</p>
+
+            <h4>Use of Website</h4>
+            <p>The content of the pages of this website is for your general information and use only. It is subject to change without notice.</p>
+
+            <h4>Intellectual Property</h4>
+            <p>The content, organization, graphics, design, compilation, and other matters related to the website are protected under applicable copyrights and other proprietary laws. The use of this website does not grant you ownership of any content.</p>
+
+            <h4>Limitation of Liability</h4>
+            <p>Tivora Labs shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use or the inability to use the services or the website.</p>
+            
+            <h4>Governing Law</h4>
+            <p>These terms shall be governed by the laws of Cyberjaya, Malaysia.</p>
+
+        </div>
+    </div>
+</div>
+
+<div id="email-form-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2><span class="orange-underline">Discuss Your Project</span></h2>
+        <div class="modal-body">
+            <p>Fill out the form below, and we will prepare an email draft to **ping@tivoralabs.com** for your review in your default mail client.</p>
+            
+            <form id="contact-form-internal" class="contact-form-modal">
+                <div class="form-group">
+                    <label for="modal-from-email">Your Email Address (From)</label>
+                    <input type="email" id="modal-from-email" name="fromEmail" required placeholder="name@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-subject">Subject</label>
+                    <input type="text" id="modal-subject" name="subject" required placeholder="Project Inquiry: Data Platform Architecture">
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-message">Your Message</label>
+                    <textarea id="modal-message" name="message" rows="6" required placeholder="Hello Tivora Labs team, I'd like to discuss..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn primary full-width-btn">Open Email Draft</button>
+            </form>
+        </div>
+    </div>
+</div>
 
     <script src="script.js"></script>
 </body>

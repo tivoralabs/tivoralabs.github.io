@@ -81,7 +81,7 @@ const privacyLink = document.getElementById('privacy-link');
 const termsLink = document.getElementById('terms-link');
 const emailUsLink = document.getElementById('email-us-link'); // <-- NEW BUTTON REFERENCE
     
-const allModals = [privacyModal, termsModal, emailFormModal]; // <-- UPDATED ARRAY
+const allModals = [privacyModal, emailFormModal];
 
     // Function to open a modal
     const openModal = (modal) => {
@@ -110,12 +110,13 @@ document.body.style.overflow = ''; // Re-enable background scrolling
         });
     }
 
-    if (termsLink) {
-        termsLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Stop the default scroll-to-top behavior
-            openModal(document.getElementById('terms-modal'));
-        });
-    }
+    /* if (termsLink) {
+    termsLink.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        openModal(document.getElementById('terms-modal'));
+    });
+}
+*/
 
     // Click handlers for close button (span class="close-btn")
     allModals.forEach(modal => {
@@ -127,12 +128,14 @@ document.body.style.overflow = ''; // Re-enable background scrolling
         }
     });
 
-    if (termsLink) {
-termsLink.addEventListener('click', (e) => {
-e.preventDefault(); // Stop the default scroll-to-top behavior
-openModal(termsModal);
-});
+   /*
+if (termsLink) {
+    termsLink.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        openModal(termsModal);
+    });
 }
+*/
 
     // NEW: Click handler for 'Email Us Today' to open the form modal
     if (emailUsLink) {
@@ -259,5 +262,6 @@ function handleContact(e){
     e.target.reset();
     return false;
 }
+
 
 
